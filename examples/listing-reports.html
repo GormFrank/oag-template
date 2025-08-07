@@ -20,13 +20,9 @@ layout: default
 	}'>
 	<div class="row mrgn-tp-lg">
 		<div id="searchFilter">
-			
-			<div class="col-xs-12 col-sm-4 col-lg-3">
-				<p class="h3 wb-fltr-info mrgn-tp-0"><span data-nbitem></span> Results</p>
-				<details open>
-					<summary>
-						<h3>Filter options</h3>
-					</summary>
+			<div class="col-xs-12 col-md-4 col-lg-3">
+				<details open class="oag-filter-options provisional wb-details-close mb-4" data-breakpoint="md">
+					<summary><h2>Filter options</h2></summary>
 					<div class="form-group">
 						<label for="customSearchUI">Search Report Title</label>
 						<input type="search" class="form-control full-width" id="customSearchUI" data-wbfltrid="filteredReportsList" aria-controls="filteredReportsList" placeholder="Search...">
@@ -34,8 +30,8 @@ layout: default
 					<!-- Type of reports -->
 					<div class="form-group mrgn-bttm-0">
 						<fieldset>
-							<legend class="h5 mrgn-tp-0"><span class="field-name">Type of Report</span></legend>
-							<ul class="list-unstyled">
+							<legend>Type of Report</legend>
+							<ul class="list-unstyled mb-0">
 								<li class="checkbox">
 									<label>
 										<input type="checkbox" name="report_type" class="wb-tagfilter-ctrl" value="type__ag_reports"> Auditor General Reports
@@ -85,39 +81,47 @@ layout: default
 					</div>
 					<hr>
 					<div class="bg-light p-3 mt-3 small">
-						<h4>Older Reports</h4>
+						<h3 class="mt-0 h6">Older Reports</h4>
 						<p>To view reports published over 5 years ago, please consult the <a href="https://canada.ca">Government of Canada Publications site</a>.</p>
 					</div>
 				</details>
 			</div>
-		</div>
-		<!-- Reports listing -->
-		<div class="col-xs-12 col-sm-8 col-lg-9">
-			<div class="row wb-eqht-grd hght-inhrt reports-list wb-tagfilter-items" data-wb-json='{
-					"url": "reports_en.json#/events",
-					"mapping": [
-						
-						{ "selector": ".listing-card", "attr": "data-wb-tags", "value": "/tags" },
-						{ "selector": ".label-primary", "attr": "data-report-type", "value": "/type" },
-						{ "selector": ".report-type", "value": "/type" },
-						{ "selector": ".report-title", "value": "/title" }
-					]
-				}'>
-				<template>
-					<div class="col-sm-6 col-md-4 listing-card" data-wb-tags="">
-						<article class="oag-card bg-light oag-shadow h-100">
-							<img src="../assets/img/report-card.png " alt="media icon">
-							<a href="#" class="stretched-link no-undrln mb-2"><span class="label label-primary" data-report-type=""><span class="report-type"></span> Reports</span></a>
-							<h3 class="report-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</h3>
-						</article>
-					</div>
-				</template>
-				
+
+			<!-- Reports listing -->
+			<div class="col-xs-12 col-md-8 col-lg-9">
+				<div class="d-flex mb-2">
+					<p class="wb-fltr-info ml-auto">
+						<span class="text-muted"><span data-nbitem></span> Results</span>
+					</p>
+				</div>
+				<div class="row wb-eqht-grd hght-inhrt reports-list wb-tagfilter-items" data-wb-json='{
+						"url": "reports_en.json#/events",
+						"mapping": [
+							
+							{ "selector": ".listing-card", "attr": "data-wb-tags", "value": "/tags" },
+							{ "selector": ".label", "attr": "data-report-type", "value": "/type" },
+							{ "selector": ".report-type", "value": "/type" },
+							{ "selector": "h3 a", "value": "/title" }
+						]
+					}'>
+					<template>
+						<div class="col-xs-12 col-md-6 listing-card" data-wb-tags="">
+							<article class="oag-card oag-heading-as-body bg-light h-100">
+								<img src="https://dummyimage.com/300x300" alt="media icon">
+								<div>
+									<span class="label label-default" data-report-type=""><span class="report-type"></span> Reports</span>
+								</div>
+								<h3 class="mb-0 mt-2"><a href="audit-report.html" class="stretched-link mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</a></h3>
+							</article>
+						</div>
+					</template>
+					
+				</div>
+				<div class="wb-tagfilter-noresult">
+					<p>No item match this combination of filters.</p>
+				</div>			
+				<div id="filteredReportsListPagination"></div>
 			</div>
-			<div class="wb-tagfilter-noresult">
-				<p>No item match this combination of filters.</p>
-			</div>			
-			<div id="filteredReportsListPagination"></div>
 		</div>
 	</div>
 </section>
