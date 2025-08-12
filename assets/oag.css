@@ -505,6 +505,10 @@
 		}
 	}
 
+	.listing-petition  h3 {
+		word-break: normal;
+	}
+
 	.wb-paginate-pager {
 		.pagination {
 			> li {
